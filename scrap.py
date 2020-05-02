@@ -9,9 +9,14 @@ soup = BeautifulSoup(page.text, 'html.parser')
 
 document = open('SiteHTML.html', 'w') #vai sobrescrever o arquivo anterior
 document.write(soup.prettify())
+document = open('SiteHTML.txt', 'w') #vai sobrescrever o arquivo anterior
+document.write(soup.prettify())
 
 link_anterior = soup.find(class_='AlphaNav')
 link_anterior.decompose()
+
+lista = csv.writer(open('Artistas.csv', 'w'))
+lista.writerow(['Nome','Link'])
 
 lista_nomes = soup.find(class_= 'BodyText')
 lista_nomes_itens = lista_nomes.find_all('a')
@@ -19,8 +24,8 @@ lista_nomes_itens = lista_nomes.find_all('a')
 for artista_nome in lista_nomes_itens:
     nomes = artista_nome.contents[0]
     links = 'https://web.archive.org' + artista_nome.get('href')
-    print(nomes)
-    print(links)
+    lista.writerow([nomes, links])
+
 
 
 
