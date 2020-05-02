@@ -1,5 +1,6 @@
-from urllib.request import urlopen
+import requests
 from bs4 import BeautifulSoup
-html = urlopen("https://www.python.org/")
-res = BeautifulSoup(html.read(),"html5lib")
-print(res.title)
+
+url = 'https://web.archive.org/web/20121007172955/http://www.nga.gov/collection/anZ1.htm'
+page = requests.get(url)
+soup = BeautifulSoup(page.text, 'html.parser')
