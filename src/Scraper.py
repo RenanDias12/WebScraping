@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-lista = csv.writer(open('Artistas2.csv', 'w'))
+lista = csv.writer(open('Artistas.csv', 'w'))
 lista.writerow(['Nome','Link'])
 
 for i in range(26):
